@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './app.css';
+import '../stylesheets/app.css';
+import '../javascripts/StartButton';
+import StartButton from './StartButton';
 
 export default class App extends Component {
   constructor(props) {
@@ -16,8 +18,9 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <StartButton />
         {this.state.username ? (
-          <h1>Hello {this.state.username}</h1>
+          <h1>Hello, {this.state.username}!</h1>
         ) : (
           <h1>Loading.. please wait!</h1>
         )}
