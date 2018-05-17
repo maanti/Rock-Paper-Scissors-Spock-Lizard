@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import io from 'socket.io-client';
 import '../stylesheets/app.css';
-import '../javascripts/StartButton';
 import StartButton from './StartButton';
+
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = { username: null };
+    const socks = io('localhost:8080');
   }
 
   componentDidMount() {
