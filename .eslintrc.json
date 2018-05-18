@@ -10,6 +10,7 @@
     "react/jsx-filename-extension": "off",
     "jsx-a11y/label-has-for": [ 2, {
     "components": [ "Label" ],
+      "linebreak-style": "off",
     "required": {
       "some": [ "nesting", "id" ]
     },
