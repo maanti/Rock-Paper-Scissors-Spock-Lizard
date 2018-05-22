@@ -5,9 +5,9 @@ let roomsCounter = 0;
 function hostCreateNewGame() {
   const gameId = roomsCounter;
   roomsCounter += 1;
-
-  this.emit('newGameCreated', gameId);
-  this.join(gameId);
+  gameSocket.emit('newGameCreated', gameId);
+  gameSocket.join(gameId);
+  gameSocket.emit('connectedToRoom', gameId);
 }
 
 function hostPrepareGame(gameId) {
@@ -28,8 +28,14 @@ function hostNextRound(data) {
   // ////////////////////////////////
 }
 
-function playerJoinGame(data) {
-  // /////////////////////////////////
+function playerJoinGame(gameId) {
+  if (gameId !== null) {
+    this.join(gameId);
+    this.emit('connectedToRoom', gameId);
+    this.emit('roomIsFull', gameId);
+  } else {
+    hostCreateNewGame();
+  }
 }
 
 function playerAnswer(data) {
@@ -40,7 +46,12 @@ function playerRestart(data) {
   // /////////////////////////
 }
 
-
+/**
+ * Function called by index.js to initialize new game
+ *
+ * @param sio Socket.io lib
+ * @param socket Socket object for the connected client
+ * * */
 exports.initGame = function (sio, socket) {
   io = sio;
   gameSocket = socket;
