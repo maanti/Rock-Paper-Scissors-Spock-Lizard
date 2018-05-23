@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 import '../stylesheets/app.css';
-import { Link } from 'react-router-dom';
+import Game from './Game';
 
 
 export default class App extends Component {
@@ -11,7 +11,8 @@ export default class App extends Component {
     this.state = {
       gameId: this.props.match.params.gameId,
       link: null,
-      error: null
+      error: null,
+      view: 'welcome'
     };
   }
   componentDidMount() {
@@ -33,16 +34,23 @@ export default class App extends Component {
     socket.on('roomIsFull', () => {
       console.log('roomIsFull');
     });
-    socket.on('startGame', () => { console.log('Game is started'); });
+    socket.on('startGame', () => {
+      console.log('Game is started');
+      this.setState({ view: 'game' });
+      this.render();
+    });
     socket.on('error', (error) => { this.state.error = error; });
   }
   render() {
+    if (this.state.view === 'game') {
+      return (<div><Game /></div>);
+    }
     return (
       <div>
-        You are in room №{this.state.gameId}<br />
+          You are in room №{this.state.gameId}<br />
         {this.state.link}
         {this.state.error}
-        <Link to={`${this.state.gameId}/play`}>START</Link>
       </div>);
   }
 }
+
