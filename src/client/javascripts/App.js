@@ -1,56 +1,48 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types,jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 import '../stylesheets/app.css';
+import { Link } from 'react-router-dom';
 
-const IO = {
-  init() {
-    IO.socket = io.connect('http://localhost:8080');
-    IO.bindEvents();
-  },
-  bindEvents() {
-    IO.socket.on('connected', IO.onConnected());
-    IO.socket.on('newGameCreated', IO.onNewGameCreated());
-    IO.socket.on('playerJoinedRoom', IO.onPlayerJoinedRoom());
-    IO.socket.on('beginNewGame', IO.beginNewGame());
-    IO.socket.on('error', IO.showError());
-    IO.socket.on('gameOver', IO.onGameOver());
-  },
-  onConnected() {
-    mySocketId = IO.socket.socket.sessionId;
-  }
-
-};
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      room: this.props.match.params.room,
-      link: null
+      gameId: this.props.match.params.gameId,
+      link: null,
+      error: null
     };
   }
   componentDidMount() {
     const socket = io.connect('http://localhost:8080');
     socket.on('connect', () => {
-      socket.emit('playerJoinGame', this.state.room);
+      socket.emit('joinGame', this.state.gameId);
     });
-    socket.on('connectedToRoom', (room) => {
-      console.log(room);
-      if (this.state.room !== room) {
-        console.log(room);
-        this.state.link = `Share this link with a friend to play: ${window.location.href}${room}`;
-        this.setState({ room });
+    socket.on('shareLink', (gameId) => {
+      const pattern = new RegExp('\\d+$');
+      if (pattern.test(window.location.href)) {
+        this.state.link = `Share this link with a friend to play: ${window.location.href}`;
+        this.setState({ gameId });
+      } else {
+        this.state.link = `Share this link with a friend to play: ${window.location.href}${gameId}`;
+        this.setState({ gameId });
       }
     });
-    socket.on('roomIsFull', () => console.log('roomIsFull'));
-    socket.on('message', message => console.log(message));
+
+    socket.on('roomIsFull', () => {
+      console.log('roomIsFull');
+    });
+    socket.on('startGame', () => { console.log('Game is started'); });
+    socket.on('error', (error) => { this.state.error = error; });
   }
   render() {
     return (
       <div>
-        You are in room №{this.state.room}<br />
+        You are in room №{this.state.gameId}<br />
         {this.state.link}
+        {this.state.error}
+        <Link to={`${this.state.gameId}/play`}>START</Link>
       </div>);
   }
 }
