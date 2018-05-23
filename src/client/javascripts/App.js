@@ -1,11 +1,19 @@
 /* eslint-disable react/prop-types,jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import io from 'socket.io-client';
+import $ from 'jquery';
 import '../stylesheets/app.css';
 import Game from './Game';
 
 
 export default class App extends Component {
+  static copyToClipboard(element) {
+    const $temp = $('<input>');
+    $('#welcome-container').append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand('copy');
+    $temp.remove();
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -23,10 +31,10 @@ export default class App extends Component {
     socket.on('shareLink', (gameId) => {
       const pattern = new RegExp('\\d+$');
       if (pattern.test(window.location.href)) {
-        this.state.link = `Share this link with a friend to play: ${window.location.href}`;
+        this.state.link = `${window.location.href}`;
         this.setState({ gameId });
       } else {
-        this.state.link = `Share this link with a friend to play: ${window.location.href}${gameId}`;
+        this.state.link = `${window.location.href}${gameId}`;
         this.setState({ gameId });
       }
     });
@@ -45,10 +53,12 @@ export default class App extends Component {
     if (this.state.view === 'game') {
       return (<div><Game /></div>);
     }
+
     return (
-      <div>
-          You are in room №{this.state.gameId}<br />
-        {this.state.link}
+      <div id="welcome-container">
+        <h1>You are in room №{this.state.gameId}</h1><br />
+        Share this link with a friend to play: <p id="link">{this.state.link}</p>
+        <button onClick={() => App.copyToClipboard('#link')}>Copy</button>
         {this.state.error}
       </div>);
   }

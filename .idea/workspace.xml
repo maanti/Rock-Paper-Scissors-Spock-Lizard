@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2ccb7f18-1742-47ce-a900-d7822c1cd40e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/javascripts/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/javascripts/App.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/src/server/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="368">
-              <caret line="34" column="33" lean-forward="true" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+              <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -48,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/src/client/javascripts/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="253">
-              <caret line="11" column="59" lean-forward="true" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
+              <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -60,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/client/javascripts/Game.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
-              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -71,8 +72,8 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/javascripts/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="47" column="12" lean-forward="true" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+            <state relative-caret-position="350">
+              <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#63#104#0" expanded="true" />
@@ -278,7 +279,7 @@
       <workItem from="1526759918136" duration="17951000" />
       <workItem from="1526964430828" duration="4616000" />
       <workItem from="1527063388680" duration="11025000" />
-      <workItem from="1527096121950" duration="14131000" />
+      <workItem from="1527096121950" duration="16207000" />
     </task>
     <task id="LOCAL-00001" summary="Second user can now connect to the room via link.">
       <created>1526779066279</created>
@@ -301,11 +302,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527108098399</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Now players automatically get to the game screen when there are two users in the room. More precisely, when 'roomIsFull' event occurs (it gives potential opportunity to increase number of players)">
+      <created>1527111934039</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1527111934039</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88500000" />
+    <option name="totallyTimeSpent" value="90576000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1680" height="1024" extended-state="6" />
@@ -364,7 +372,8 @@
     <MESSAGE value="The situation when user modifies the link is now handled" />
     <MESSAGE value="Added game screen. A lot of code has been rewritten." />
     <MESSAGE value="Added README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added README.md" />
+    <MESSAGE value="Now players automatically get to the game screen when there are two users in the room. More precisely, when 'roomIsFull' event occurs (it gives potential opportunity to increase number of players)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now players automatically get to the game screen when there are two users in the room. More precisely, when 'roomIsFull' event occurs (it gives potential opportunity to increase number of players)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/client/stylesheets/app.css">
@@ -581,29 +590,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/javascripts/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="11" column="59" lean-forward="true" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
+          <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/javascripts/Game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -618,14 +610,31 @@
     <entry file="file://$PROJECT_DIR$/src/server/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
-          <caret line="34" column="33" lean-forward="true" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/javascripts/Game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/javascripts/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="47" column="12" lean-forward="true" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+        <state relative-caret-position="350">
+          <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#63#104#0" expanded="true" />
