@@ -1,12 +1,22 @@
 h1 {
-  color: teal;
+  color: whitesmoke;
   text-align: center;
 }
-#startForm {
+h2 {
+  color: whitesmoke;
+  text-align: center;
+}
+#copy {
+  text-align: center;
+  align-items: center;
+}
+#welcome-container {
+  padding-top: 20%;
   text-align: center;
 }
 body{
   background: linear-gradient(to right, #D5C2D8, #4B3048);
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 .icon{
   width: 150px;

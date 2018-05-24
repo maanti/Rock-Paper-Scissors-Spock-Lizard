@@ -5,6 +5,7 @@ import $ from 'jquery';
 import '../stylesheets/app.css';
 import Game from './Game';
 
+let socket;
 
 export default class App extends Component {
   static copyToClipboard(element) {
@@ -24,7 +25,7 @@ export default class App extends Component {
     };
   }
   componentDidMount() {
-    const socket = io.connect('http://localhost:8080');
+    socket = io.connect('http://localhost:8080');
     socket.on('connect', () => {
       socket.emit('joinGame', this.state.gameId);
     });
@@ -51,15 +52,15 @@ export default class App extends Component {
   }
   render() {
     if (this.state.view === 'game') {
-      return (<div><Game /></div>);
+      return (<Game socket={socket} />);
     }
 
     return (
       <div id="welcome-container">
         <h1>You are in room №{this.state.gameId}</h1><br />
-        Share this link with a friend to play: <p id="link">{this.state.link}</p>
-        <button onClick={() => App.copyToClipboard('#link')}>Copy</button>
-        {this.state.error}
+        <h2>Share this link with a friend to play: <p id="link">{this.state.link}</p></h2>
+        <button id="copy" onClick={() => App.copyToClipboard('#link')}>Copy</button>
+        <div className="error"> {this.state.error} </div>
       </div>);
   }
 }
