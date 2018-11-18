@@ -1,13 +1,8 @@
 # Rock-Paper-Scissors-Spock-Lizard
 
-This is the test task for Fora Soft. Node.js, React, Socket.io
+This is the test task. Node.js, React, Socket.io
 
-- [General Technical Requirements](#General-Technical-Requirements)
-- [Scope Overview](#Scope-Overview)
-- [Specific Technical Requirements](#specific-technical-requirements)
-- [Additional Tasks](#Additional-tasks)
-
-##General Technical Requirements
+## General Technical Requirements
 
 1. Be production-ready 
 2. Be understandable and maintainable by other developers 
@@ -16,7 +11,7 @@ This is the test task for Fora Soft. Node.js, React, Socket.io
 5. Be bug free, compile and execute correctly 
 6. Be written primarily in JavaScript
 
-##Scope Overview
+## Scope Overview
 As a part of the test task, you need to develop a simple JavaScript application - the online RockPaper-Scissors-Spock-Lizard game (business requirements):  
 - [done] After opening a page, user should see a waiting screen (while waiting for a second player).
 - [done] There should be a link, which needs to be sent to the second player.   
@@ -27,7 +22,7 @@ As a part of the test task, you need to develop a simple JavaScript application 
 - [to-do] Optionally, you can add sounds.  
 - [to-do] Several pairs of players should be able to play at the same time.  
 
-##Specific Technical Requirements
+## Specific Technical Requirements
 Your solution should (specific technical requirements):
 1. Be well commented 
 2. Use OOP practices 
